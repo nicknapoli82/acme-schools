@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Princeton University",
+        "imageLocation": "../public/img/Princetonshieldlarge.png"
+    },
+    {
+        "name": "MIT",
+        "imageLocation": "../public/img/MIT_Seal.png"
+    },
+    {
+        "name": "Harvard",
+        "imageLocation": "../public/img/Harvard.png"
+    },
+    {
+        "name": "Yale",
+        "imageLocation": "../public/img/Yale.jpg"
+    },
+    {
+        "name": "Fullstack Academy",
+        "imageLocation": "../public/img/FullstackAcademy.png"
+    }
+]
