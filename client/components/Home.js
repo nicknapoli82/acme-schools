@@ -1,10 +1,13 @@
 import React from 'react';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 import Header from './Header';
 import StudentForm from './StudentForm';
+import {initSchools} from '../storeReducers/schoolReducer';
+import {initStudents} from '../storeReducers/studentReducer';
 
-export default function Home({store}) {
-  console.log(store);
+function Home({schools, students}) {
   return(
     <div>
       <Header />
@@ -15,3 +18,10 @@ export default function Home({store}) {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  schools: state.schools,
+  students: state.students
+});
+
+export default connect(mapStateToProps)(Home);

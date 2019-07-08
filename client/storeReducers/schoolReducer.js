@@ -1,17 +1,22 @@
 // Const Defines!!!
-const GET_SCHOOLS = 'GET_SCHOOLS';
+const INIT_SCHOOLS = 'INIT_SCHOOLS';
 
 // action Methods
-export const getSchools = ()=> (
+export const initSchools = (data)=> (
   {
-    type: GET_SCHOOLS,
+    type: INIT_SCHOOLS,
+    data: data
   }
 );
 
-export default function schoolReducer (schools = [], action) {
+const schoolReducer =  (schools = [], action)=> {
   // I will add stuff here soon!
+  let newSchools = [...schools];
   switch(action.type) {
-  case GET_SCHOOLS:
+  case INIT_SCHOOLS:
+    newSchools = [...schools, ...action.data];
   }
-  return schools;
-}
+  return newSchools;
+};
+
+export default schoolReducer;

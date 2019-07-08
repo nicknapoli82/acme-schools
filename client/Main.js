@@ -1,13 +1,27 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {HashRouter as Router, Route} from 'react-router-dom';
+import axios from 'axios';
 
 import store from './store';
 import Header from './components/Header';
 import StudentForm from './components/StudentForm';
 import Home from './components/Home';
+import {schoolReducer, initSchools} from './storeReducers/schoolReducer';
+import {initStudents} from './storeReducers/studentReducer';
 
 export default class Main extends React.Component {
+  constructor() {
+    super();
+  }
+
+  async componentDidMount() {
+    let result = await axios.get('/api/schools');
+    store.dispatch(initSchools(result.data));
+    result = await axios.get('/api/students');
+    store.dispatch(initStudents(result.data));
+  }
+
   render() {
     return (
       <Provider store={store}>
