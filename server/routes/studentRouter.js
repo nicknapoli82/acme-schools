@@ -14,5 +14,16 @@ router.get('/', async (req, res, next)=> {
   }
 });
 
+router.post('/', async (req, res, next)=> {
+  console.log(req.body);
+  try{
+    const result = Student.create(req.body);
+    res.status(201).send(result);
+  }
+  catch(e){
+    next(e);
+  }
+});
+
 /* TODO: Nick make the rest of the routes for the school api
    Right now it only needs get. Should make complete*/

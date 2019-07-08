@@ -16,10 +16,16 @@ export default class Main extends React.Component {
   }
 
   async componentDidMount() {
-    let result = await axios.get('/api/schools');
-    store.dispatch(initSchools(result.data));
-    result = await axios.get('/api/students');
-    store.dispatch(initStudents(result.data));
+    try{
+      let result = await axios.get('/api/schools');
+      store.dispatch(initSchools(result.data));
+      result = await axios.get('/api/students');
+      store.dispatch(initStudents(result.data));
+    }
+    catch(e){
+      console.log(e);
+    }
+
   }
 
   render() {
