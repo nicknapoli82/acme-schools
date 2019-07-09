@@ -4,9 +4,8 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 
 import store from './store';
-import Header from './components/Header';
-import StudentForm from './components/StudentForm';
 import Home from './components/Home';
+import Students from './components/Students';
 import {schoolReducer, initSchools} from './storeReducers/schoolReducer';
 import {initStudents} from './storeReducers/studentReducer';
 
@@ -33,6 +32,7 @@ export default class Main extends React.Component {
       <Provider store={store}>
         <Router>
           <Route exact path="/" component={Home} />
+          <Route path="/students" component={Students} />          
         </Router>
       </Provider>
     );

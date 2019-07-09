@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import {connect} from 'react-redux';
 
 import Header from './Header';
 import StudentForm from './StudentForm';
-import {initSchools} from '../storeReducers/schoolReducer';
-import {initStudents} from '../storeReducers/studentReducer';
 import {mostPopularSchool, calcHighestGPA} from './sharedFunctions/computation';
 
 function Home({schools, students}) {

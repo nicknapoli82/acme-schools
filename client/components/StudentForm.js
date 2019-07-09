@@ -36,6 +36,7 @@ export default class StudentForm extends React.Component {
   }
 
   render() {
+    const {schools} = store.getState();
     return (
       <form onSubmit={this.handleSubmit}>
         <label>First Name
@@ -50,9 +51,10 @@ export default class StudentForm extends React.Component {
         <label>GPA
           <input type="text" name="GPA" value={this.state.GPA} onChange={this.handleChange} />
         </label>
-        <select onChange={this.handleChange} >
-          <option value="NULL">--Not Enrolled--</option>
-        </select>Enroll At
+        Enroll At<select onChange={this.handleChange} >
+          <option key="0" value="Not Enrolled">--Not Enrolled--</option>
+          {schools.map((s)=> <option key={s.id} value={s.id}>{s.name}</option>)}
+        </select>
         <button>Save</button>
       </form>
     );

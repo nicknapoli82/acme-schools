@@ -25,7 +25,6 @@ export function mostPopularSchool(schools, students){
   for(let i in schoolList){
     if(studentBodyList[i] > maxIndex) maxIndex = i;
   }
-  console.log(studentBodyList[maxIndex]);
   if (schools.length) {
     return {name: schools[maxIndex].name, size: studentBodyList[maxIndex]};
   }
