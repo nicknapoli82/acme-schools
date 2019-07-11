@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build-watch & npm run start-server",
-    "start-server": "nodemon ./server/server.js",
+    "start-server": "nodemon ./server/server.js --ignore './client' --ignore './public'",
     "build-watch": "webpack -w"
   },
   "keywords": [],
