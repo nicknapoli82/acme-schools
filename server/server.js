@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 // Probably don't need the logger, but for now... Meh
 app.use(require('morgan')('tiny'));
 app.use('/', express.static('./public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Lets use get some routes working now eh?
