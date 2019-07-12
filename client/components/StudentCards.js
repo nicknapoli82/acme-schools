@@ -3,6 +3,11 @@ import {connect} from 'react-redux';
 
 import Header from './Header';
 import StudentForm from './StudentForm';
+import SchoolSelect from './sharedComponents/SchoolSelect';
+
+function updateStudent(e){
+  console.log(e.target.value);
+}
 
 function StudentCards ({students, schools}) {
   return(
@@ -12,9 +17,7 @@ function StudentCards ({students, schools}) {
             <div key={s.id}>
               {s.firstName} {s.lastName}<br/>
               {s.GPA}<br/>
-              <select>
-                <option>--Not Enrolled--</option>
-              </select><br/>
+              <SchoolSelect schools={schools} defaultValue={s.schoolId} handleChange={updateStudent}/>
               <button>Destroy Student</button>
             </div>
           );

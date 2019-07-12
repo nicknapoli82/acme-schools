@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import store from '../store';
 import {createStudent} from '../storeReducers/studentReducer';
+import SchoolSelect from './sharedComponents/SchoolSelect';
 
 export default class StudentForm extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ export default class StudentForm extends React.Component {
       lastName: '',
       email: '',
       GPA: '',
-      schoolID: ''
+      schoolId: ''
     };
   }
 
@@ -27,8 +28,7 @@ export default class StudentForm extends React.Component {
     ev.preventDefault();
     axios.post('/api/students', this.state)
       .then((response)=>{
-        store.dispatch(createStudent(response.config.data));
-        console.log(response);
+        store.dispatch(createStudent(response.data));
       })
       .catch((e)=>{
         console.log(e);
@@ -51,10 +51,7 @@ export default class StudentForm extends React.Component {
         <label>GPA
           <input type="text" name="GPA" value={this.state.GPA} onChange={this.handleChange} />
         </label>
-        Enroll At<select onChange={this.handleChange} >
-          <option key="0" value="Not Enrolled">--Not Enrolled--</option>
-          {schools.map((s)=> <option key={s.id} value={s.id}>{s.name}</option>)}
-        </select>
+        Enroll At<SchoolSelect schools={schools} defaultValue = {'--Not Enrolled--'} handleChange={this.handleChange}/>
         <button>Save</button>
       </form>
     );
