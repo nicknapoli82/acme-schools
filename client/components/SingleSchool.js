@@ -30,7 +30,7 @@ function SingleSchool ({students, schools, match}) {
       <StudentForm />
       <h1>{school.name} ({studentInSchoolList(students, school.id).length} Students enrolled)</h1>
       <img src={school.imageLocation} /><br/>
-      <StudentSelect students={students} schoolId={school.id} handleChange={changeStudent}/>
+      <StudentSelect students={students} schoolId={school.id} defaultValue='--Transfer Student--' handleChange={changeStudent}/>
       <div>
         {listStudents.map((s)=> <SingleStudent key={s.id} student={s} schools={schools} />)}
       </div>

@@ -16,11 +16,14 @@ router.get('/', async (req, res, next)=> {
 
 router.post('/', async (req, res, next)=> {
   try{
-    const result = await Student.create(req.body);
+    const newStudent = req.body;
+    newStudent.schoolId = req.body.schoolId === '' ? null : req.body.schoolId;
+    const result = await Student.create(newStudent);
     res.status(201).send(result);
   }
   catch(e){
-    next(e);
+    const errorList = e.errors.map((item)=> ({input: item.path, message: item.validatorName}));
+    res.status(500).send(errorList);
   }
 });
 

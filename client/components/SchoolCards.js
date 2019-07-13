@@ -30,7 +30,7 @@ function SchoolCards ({students, schools}) {
               <Link to={`/schools/${school.id}`}>{school.name}</Link><br/>
               <img src={school.imageLocation} /><br/>
               Student Count {studentInSchoolList(students, school.id).length}<br/>
-              <StudentSelect students={students} schoolId={school.id} handleChange={changeStudent}/>
+              <StudentSelect students={students} schoolId={school.id} defaultValue='--Add Student--' handleChange={changeStudent}/>
             </div>
           );
         })

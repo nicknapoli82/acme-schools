@@ -9,11 +9,11 @@ export function SchoolSelect({schools, defaultValue, handleChange}) {
   );
 }
 
-export function StudentSelect({students, schoolId, handleChange}) {
+export function StudentSelect({students, schoolId, defaultValue, handleChange}) {
   const enrollable = students.filter(s => s.schoolId !== schoolId);
   return(
     <select  name='studentId' onChange={(e)=> handleChange(e.target.value, schoolId)}>
-      <option key="0" value="--Add Student--">--Add Student--</option>
+      <option key="0" value={defaultValue}>{defaultValue}</option>
       {enrollable.map((s)=> <option key={s.id} value={s.id}>{s.firstName} {s.lastName}</option>)}
     </select>
   );
