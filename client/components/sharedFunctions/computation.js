@@ -23,7 +23,9 @@ export function mostPopularSchool(schools, students){
   // Based on the fact that this is an O of n thing, this seems logical to me, though imperative
   let maxIndex = 0;
   for(let i in schoolList){
-    if(studentBodyList[i] > maxIndex) maxIndex = i;
+    if(Number(studentBodyList[i]) > studentBodyList[maxIndex]) {
+      maxIndex = i;
+    }
   }
   if (schools.length) {
     return {name: schools[maxIndex].name, size: studentBodyList[maxIndex]};

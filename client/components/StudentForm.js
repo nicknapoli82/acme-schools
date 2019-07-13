@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import store from '../store';
 import {createStudent} from '../storeReducers/studentReducer';
-import SchoolSelect from './sharedComponents/SchoolSelect';
+import {SchoolSelect} from './sharedComponents';
 
 export default class StudentForm extends React.Component {
   constructor() {

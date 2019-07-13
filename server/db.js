@@ -83,7 +83,7 @@ async function syncAndSeed() {
     );
     // Lets generate some students Randomly just to get the Database going eh?
     const students = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
       const tempS = {};
       tempS.firstName = faker.name.firstName();
       tempS.lastName = faker.name.lastName();

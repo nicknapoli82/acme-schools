@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 
 import Header from './Header';
 import StudentForm from './StudentForm';
-import StudentCards from './StudentCards';
+import SchoolCards from './SchoolCards.js';
 
-export default function Students () {
+export default function Schools () {
   return (
-    <div>
+      <div>
       <Header />
       <StudentForm />
-      <StudentCards />
-    </div>
+      <SchoolCards />
+      </div>
   );
 }

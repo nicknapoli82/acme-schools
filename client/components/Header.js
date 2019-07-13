@@ -11,7 +11,7 @@ function Header({schools, students}) {
         <h1><Link to='/'>Acme Schools</Link></h1>
         <div>
           <ul>
-            <li>Schools {schools.length}</li>
+            <li><Link to='/schools'>Schools {schools.length}</Link></li>
             <li><Link to='/students'>Students {students.length}</Link></li>
             <li>Most Popular {mostPopular.name} ({mostPopular.size})</li>
             <li>Top School {highestGPA.name}</li>

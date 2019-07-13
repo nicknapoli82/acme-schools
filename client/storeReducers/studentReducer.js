@@ -1,7 +1,7 @@
 // Const Defines!!!
 const INIT_STUDENTS = 'INIT_STUDENTS';
 const CREATE_STUDENT = 'CREATE_STUDENT';
-const PUT_STUDENT = 'UPDATE_STUDENT';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const DESTROY_STUDENT = 'DESTROY_STUDENT';
 
 // action Methods
@@ -19,9 +19,9 @@ export const createStudent = (data)=> (
   }
 );
 
-export const putStudent = (id, school)=> (
+export const updateStudent = (id, school)=> (
   {
-    type: PUT_STUDENT,
+    type: UPDATE_STUDENT,
     id: id,
     schoolId: school
   }
@@ -44,7 +44,7 @@ export default function studentReducer (students = [], action) {
   case CREATE_STUDENT:
     newStudents = [...students, action.data];
     break;
-  case PUT_STUDENT:
+  case UPDATE_STUDENT:
     newStudents = newStudents.map((s)=>{
       if(s.id === action.id){
         s.schoolId = action.schoolId;
