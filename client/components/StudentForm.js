@@ -69,26 +69,31 @@ export default class StudentForm extends React.Component {
   }
 
   render() {
+    const { firstName, lastName, email, GPA, schoolId, requestValid } = this.state;
     const {schools} = store.getState();
+    let saveEnable = false;
+    const successClass = requestValid === 'Success' ? true : false;
+    if(firstName, lastName, email, GPA) saveEnable = true;
     return (
-      <div>
+      <div className='student-form'>
         <form onSubmit={this.handleSubmit}>
           <label>First Name
             <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
-          </label>
+          </label><br/>
           <label>Last Name
             <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
-          </label>
+          </label><br/>
           <label>Email
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-          </label>
+          </label><br/>
           <label>GPA
             <input type="text" name="GPA" value={this.state.GPA} onChange={this.handleChange} />
-          </label>
-          Enroll At<SchoolSelect schools={schools} defaultValue = {'--Not Enrolled--'} handleChange={this.handleChange}/>
-          <button>Save</button>
+          </label><br/>
+          Enroll At<SchoolSelect schools={schools} defaultValue = {'--Not Enrolled--'} handleChange={this.handleChange}/><br/>
+          { saveEnable === false ? <button disabled>Save</button> : <button>Save</button>}
+
         </form>
-        <div>
+        <div className={successClass ? 'submit-success' : 'submit-error-list'}>
           {this.state.requestValid
             ? Array.isArray(this.state.requestValid)
             ? this.state.requestValid.map((e, idx)=> <p key={idx}>{e}</p>)

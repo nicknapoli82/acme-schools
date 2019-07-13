@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Students from './components/Students';
 import Schools from './components/Schools';
 import SingleSchool from './components/SingleSchool';
-import {schoolReducer, initSchools} from './storeReducers/schoolReducer';
+import {initSchools} from './storeReducers/schoolReducer';
 import {initStudents} from './storeReducers/studentReducer';
 
 export default class Main extends React.Component {
