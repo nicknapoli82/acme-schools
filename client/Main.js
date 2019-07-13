@@ -7,6 +7,7 @@ import store from './store';
 import Home from './components/Home';
 import Students from './components/Students';
 import Schools from './components/Schools';
+import SingleSchool from './components/SingleSchool';
 import {schoolReducer, initSchools} from './storeReducers/schoolReducer';
 import {initStudents} from './storeReducers/studentReducer';
 
@@ -34,7 +35,8 @@ export default class Main extends React.Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route path="/students" component={Students} />
-          <Route path="/schools" component={Schools} />
+          <Route exact path="/schools" component={Schools} />
+          <Route path="/schools/:id" component={SingleSchool} />
         </Router>
       </Provider>
     );

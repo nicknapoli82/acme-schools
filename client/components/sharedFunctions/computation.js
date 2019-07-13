@@ -23,12 +23,12 @@ export function mostPopularSchool(schools, students){
   // Based on the fact that this is an O of n thing, this seems logical to me, though imperative
   let maxIndex = 0;
   for(let i in schoolList){
-    if(Number(studentBodyList[i]) > studentBodyList[maxIndex]) {
+    if(studentBodyList[i] > studentBodyList[maxIndex]) {
       maxIndex = i;
     }
   }
   if (schools.length) {
-    return {name: schools[maxIndex].name, size: studentBodyList[maxIndex]};
+    return {id: schools[maxIndex].id, name: schools[maxIndex].name, size: studentBodyList[maxIndex]};
   }
   return 0;
 }
@@ -51,16 +51,19 @@ export function calcHighestGPA(schools, students) {
   const schoolList = schoolIdList(schools);
 
   // Once again, imperative but serves the purpose
+  let id = '';
   let highestGPA = 0;
   let schoolName = '';
+
   for (let i in schoolList){
     const check = calcAvgGPA(students, schools[i].id);
     if (check > highestGPA) {
+      id = schools[i].id;
       highestGPA = check;
       schoolName = schools[i].name;
     }
   }
-  return {name: schoolName, GPA: highestGPA};
+  return {id: id, name: schoolName, GPA: highestGPA};
 }
 
 export default {mostPopularSchool, calcHighestGPA};

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
@@ -26,7 +27,7 @@ function SchoolCards ({students, schools}) {
         schools.map((school)=>{
           return (
             <div key={school.id}>
-              {school.name}<br/>
+              <Link to={`/schools/${school.id}`}>{school.name}</Link><br/>
               <img src={school.imageLocation} /><br/>
               Student Count {studentInSchoolList(students, school.id).length}<br/>
               <StudentSelect students={students} schoolId={school.id} handleChange={changeStudent}/>

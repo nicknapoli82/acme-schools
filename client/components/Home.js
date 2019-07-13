@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Header from './Header';
@@ -13,8 +14,8 @@ function Home({schools, students}) {
       <Header />
       <StudentForm />
       <h2>Home</h2>
-      <p>Our most popular school is (TODO: MAKE Link){mostPopular.name} with {mostPopular.size} students.</p>
-      <p>Our top performing school is (TODO: MAKE Link){highestGPA.name} with an average GPA of {highestGPA.GPA}</p>
+      <p>Our most popular school is <Link to={`/schools/${mostPopular.id}`}>{mostPopular.name}</Link> with {mostPopular.size} students.</p>
+      <p>Our top performing school is <Link to={`/schools/${highestGPA.id}`}>{highestGPA.name}</Link> with an average GPA of {highestGPA.GPA}</p>
     </div>
   );
 }
