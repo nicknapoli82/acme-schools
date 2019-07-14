@@ -41,6 +41,8 @@ const Student = db.define('student', {
     allowNull: true,
     validate: {
       isNumeric: true,
+      min: 0,
+      max: 4
     },
   },
 });

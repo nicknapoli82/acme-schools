@@ -50,6 +50,12 @@ export default class StudentForm extends React.Component {
           case "isNumeric":
             tempStr = 'Must be a number';
             break;
+          case "max":
+            tempStr = "Must be lower than 4";
+            break;
+          case "min":
+            tempStr = "Must be greater than 0";
+            break;
           }
           switch(er.input) {
           case "firstName":
@@ -58,6 +64,8 @@ export default class StudentForm extends React.Component {
           case "lastName":
             tempStr = 'Last Name: ' + tempStr;
             break;
+          case "GPA":
+            tempStr = "GPA: " + tempStr;
           default:
             tempStr = `${er.input}: ` + tempStr;
           }

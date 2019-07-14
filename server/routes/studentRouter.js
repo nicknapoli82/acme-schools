@@ -22,6 +22,7 @@ router.post('/', async (req, res, next)=> {
     res.status(201).send(result);
   }
   catch(e){
+    console.log(e);
     const errorList = e.errors.map((item)=> ({input: item.path, message: item.validatorName}));
     res.status(500).send(errorList);
   }
