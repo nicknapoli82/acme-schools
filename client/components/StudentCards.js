@@ -7,7 +7,7 @@ import store from '../store';
 
 function StudentCards ({students, schools}) {
   return(
-    <div>
+    <div className='cards-list'>
       {
         students.map((s)=> <SingleStudent key={s.id} student={s} schools={schools} />)
       }

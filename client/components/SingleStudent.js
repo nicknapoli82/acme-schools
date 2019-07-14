@@ -31,11 +31,11 @@ export default function SingleStudent ({student, schools}) {
   let imgLocation = schools.filter(school=> student.schoolId === school.id);
   imgLocation = imgLocation.length ? imgLocation[0].imageLocation : undefined;
   return(
-    <div>
-      {student.firstName} {student.lastName}<br/>
-      {imgLocation ? <img src={imgLocation} /> : null}<br/>
-      {student.GPA}<br/>
-      <SchoolSelect schools={schools} defaultValue={student.schoolId} handleChange={changeStudent}/><br/>
+      <div className='single-card'>
+      <div>{`${student.firstName} ${student.lastName}`}</div>
+      <div>{imgLocation ? <img src={imgLocation} /> : null}</div>
+      {student.GPA}
+      <SchoolSelect schools={schools} defaultValue={student.schoolId} handleChange={changeStudent}/>
       <button id={student.id} onClick={destroyStudent}>Destroy Student</button>
     </div>
   );

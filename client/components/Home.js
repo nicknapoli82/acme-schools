@@ -15,7 +15,7 @@ function Home({schools, students}) {
       <StudentForm />
       <h2>Home</h2>
       <p>Our most popular school is <Link to={`/schools/${mostPopular.id}`}>{mostPopular.name}</Link> with {mostPopular.size} students.</p>
-      <p>Our top performing school is <Link to={`/schools/${highestGPA.id}`}>{highestGPA.name}</Link> with an average GPA of {highestGPA.GPA}</p>
+      <p>Our top performing school is <Link to={`/schools/${highestGPA.id}`}>{highestGPA.name}</Link> with an average GPA of {highestGPA.GPA.toFixed(1)}</p>
     </div>
   );
 }

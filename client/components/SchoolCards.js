@@ -22,11 +22,11 @@ async function changeStudent(studentId, schoolId){
 
 function SchoolCards ({students, schools}) {
   return (
-    <div>
+    <div className='cards-list'>
       {
         schools.map((school)=>{
           return (
-            <div key={school.id}>
+            <div className='single-card' key={school.id}>
               <Link to={`/schools/${school.id}`}>{school.name}</Link><br/>
               <img src={school.imageLocation} /><br/>
               Student Count {studentInSchoolList(students, school.id).length}<br/>
