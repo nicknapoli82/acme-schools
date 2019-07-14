@@ -4,7 +4,7 @@ const path = require('path');
 const faker = require('faker');
 
 const db = new Sequelize(
-  process.env.DATABASE_URL || 'postgres://acme-school',
+  process.env.DATABASE_URL || 'postgres://localhost/acme-school',
   { logging: false }
 );
 
