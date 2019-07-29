@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {mostPopularSchool, calcHighestGPA} from './sharedFunctions/computation';
+import LoginForm from './LoginForm';
 
 function Header({schools, students}) {
   const mostPopular = mostPopularSchool(schools, students);
@@ -13,6 +14,7 @@ function Header({schools, students}) {
           <Link to='/students'>Students {students.length}</Link>
           <Link to={`/schools/${mostPopular.id}`}>Most Popular {mostPopular.name} ({mostPopular.size})</Link>
           <Link to={`/schools/${highestGPA.id}`}>Top School {highestGPA.name}</Link>
+	  <LoginForm />
     </div>
   );
 }
