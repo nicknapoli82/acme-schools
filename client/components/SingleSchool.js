@@ -20,21 +20,22 @@ async function changeStudent(studentId, schoolId){
   }
 }
 
-function SingleSchool ({students, schools, match}) {
+function SingleSchool ({students, schools, user, match}) {
+  const userRole = user.role;  
   const school = schools.filter(s => s.id === match.params.id)[0];
   const listStudents = students.filter((s)=> s.schoolId === school.id);
   if (school === undefined) return null;
   return (
     <div>
       <Header />
-      <StudentForm />
+      {userRole === 'admin' ? <StudentForm /> : null}
       <div className='single-school'>
         <h1>{school.name} ({studentInSchoolList(students, school.id).length} Students enrolled)</h1>
         <img src={school.imageLocation} /><br/>
-        <StudentSelect students={students} schoolId={school.id} defaultValue='--Transfer Student--' handleChange={changeStudent}/>
+      {userRole === 'admin' ? <StudentSelect students={students} schoolId={school.id} defaultValue='--Transfer Student--' handleChange={changeStudent}/> : null}
       </div>
       <div className='cards-list'>
-        {listStudents.map((s)=> <SingleStudent key={s.id} student={s} schools={schools} />)}
+      {userRole !== 'guest' ? listStudents.map((s)=> <SingleStudent key={s.id} student={s} schools={schools} userRole={userRole}/>) : null}
     </div>
       </div>
   );
@@ -42,7 +43,8 @@ function SingleSchool ({students, schools, match}) {
 
 const mapStateToProps = state => ({
   schools: state.schools,
-  students: state.students
+  students: state.students,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(SingleSchool);

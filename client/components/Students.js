@@ -5,12 +5,21 @@ import Header from './Header';
 import StudentForm from './StudentForm';
 import StudentCards from './StudentCards';
 
-export default function Students () {
+function Students ({user}) {
+  const userRole = user.role;
   return (
     <div>
       <Header />
-      <StudentForm />
+      {userRole === 'admin' ? <StudentForm /> : null}
       <StudentCards />
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  schools: state.schools,
+  students: state.students,
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Students);

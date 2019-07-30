@@ -10,10 +10,10 @@ app.use(require('morgan')('tiny'));
 app.use('/', express.static('./public'));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'capitulation',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {maxAge: 24 * 60 * 60 * 1000}
+  secret: process.env.SESSION_SECRET || 'capitulation',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 24 * 60 * 60 * 1000}
 }));
 
 app.use(express.urlencoded({ extended: true }));

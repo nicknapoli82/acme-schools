@@ -27,7 +27,7 @@ async function destroyStudent(e){
   }
 }
 
-export default function SingleStudent ({student, schools}) {
+export default function SingleStudent ({student, schools, userRole}) {
   let imgLocation = schools.filter(school=> student.schoolId === school.id);
   imgLocation = imgLocation.length ? imgLocation[0].imageLocation : undefined;
   return(
@@ -35,8 +35,8 @@ export default function SingleStudent ({student, schools}) {
       <div>{`${student.firstName} ${student.lastName}`}</div>
       <div>{imgLocation ? <img src={imgLocation} /> : null}</div>
       {student.GPA}
-      <SchoolSelect schools={schools} defaultValue={student.schoolId} handleChange={changeStudent}/>
-      <button id={student.id} onClick={destroyStudent}>Destroy Student</button>
+    {userRole === 'admin' ? <SchoolSelect schools={schools} defaultValue={student.schoolId} handleChange={changeStudent}/> : null}
+    {userRole === 'admin' ? <button id={student.id} onClick={destroyStudent}>Destroy Student</button> : null}
     </div>
   );
 }

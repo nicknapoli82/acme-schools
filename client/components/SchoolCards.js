@@ -20,7 +20,8 @@ async function changeStudent(studentId, schoolId){
   }
 }
 
-function SchoolCards ({students, schools}) {
+function SchoolCards ({students, schools, user}) {
+  const userRole = user.role;
   return (
     <div className='cards-list'>
       {
@@ -30,7 +31,7 @@ function SchoolCards ({students, schools}) {
               <Link to={`/schools/${school.id}`}>{school.name}</Link><br/>
               <img src={school.imageLocation} /><br/>
               Student Count {studentInSchoolList(students, school.id).length}<br/>
-              <StudentSelect students={students} schoolId={school.id} defaultValue='--Add Student--' handleChange={changeStudent}/>
+              {userRole === 'admin' ? <StudentSelect students={students} schoolId={school.id} defaultValue='--Add Student--' handleChange={changeStudent} /> : null}
             </div>
           );
         })
@@ -41,7 +42,8 @@ function SchoolCards ({students, schools}) {
 
 const mapStateToProps = state => ({
   schools: state.schools,
-  students: state.students
+  students: state.students,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(SchoolCards);
